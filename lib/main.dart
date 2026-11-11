@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wisata_candi/data/candi_data.dart';
 import 'screens/detail_screen.dart';
+import 'widgets/profile_info_item.dart';
 
 void main() {
   runApp(const MyApp());
