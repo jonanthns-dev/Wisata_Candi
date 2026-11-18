@@ -27,26 +27,17 @@ class ProfileInfoItem extends StatelessWidget {
           width: MediaQuery.of(context).size.width / 3,
           child: Row(
             children: [
-              Icon(
-                icon,
-                color: iconColor,
-              ),
-              const SizedBox(width: 8),
+              Icon(icon, color: iconColor),
+              SizedBox(width: 8),
               Text(
                 label,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ],
           ),
         ),
-
         Expanded(
-          child: Text(
-            ': $value',
-            style: const TextStyle(fontSize: 18),
+          child: Text(': $value', style: const TextStyle(fontSize: 18)
           ),
         ),
 
