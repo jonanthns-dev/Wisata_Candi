@@ -53,9 +53,7 @@ class _MainScreenState extends State<MainScreen> {
 
       //TODO: 3. Buat properti bottomNavigationBar dengan nilai theme
       bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(
-          canvasColor: Colors.deepPurple[50],
-        ),
+        data: Theme.of(context).copyWith(canvasColor: Colors.deepPurple[50]),
 
         //TODO: 4. Buat data dan child dari Theme
         child: BottomNavigationBar(

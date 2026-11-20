@@ -1,25 +1,26 @@
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SignInScreen extends StatefulWidget {
-  SignInScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  SignUpScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   //TODO: 1. Deklarasikan variabel
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   String _errorText = '';
-  bool _isSignedIn = false;
+  bool _isSignedUp = false;
   bool _obscurePassword = true;
 
   @override
   void dispose() {
+    _nameController.dispose();
     _usernameController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -29,7 +30,8 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       //TODO: 2. Pasang AppBar
-      appBar: AppBar(title: Text('Sign In')),
+      appBar: AppBar(title: Text('Sign Up')),
+
       //TODO: 3. Pasang body
       body: Center(
         child: SingleChildScrollView(
@@ -41,7 +43,17 @@ class _SignInScreenState extends State<SignInScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  //TODO: 5. Pasang TextFormField Nama Pengguna
+                  //TODO: 5. Pasang TextFormField Nama Lengkap
+                  TextFormField(
+                    controller: _nameController,
+                    decoration: InputDecoration(
+                      labelText: 'Nama Lengkap',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+
+                  //TODO: 6. Pasang TextFormField Nama Pengguna
+                  SizedBox(height: 20),
                   TextFormField(
                     controller: _usernameController,
                     decoration: InputDecoration(
@@ -49,7 +61,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  //TODO: 6. Pasang TextFormField Kata Sandi
+
+                  //TODO: 7. Pasang TextFormField Kata Sandi
                   SizedBox(height: 20),
                   TextFormField(
                     controller: _passwordController,
@@ -72,39 +85,25 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     obscureText: _obscurePassword,
                   ),
-                  //TODO: 7. Pasang ElevatedButton Sign In
+
+                  //TODO: 8. Pasang ElevatedButton Sign Up
                   SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => SignInScreen(),
+                        builder: (context) => SignUpScreen(),
                       ),);
                     },
-                    child: Text('Sign In'),
+                    child: Text('Sign Up'),
                   ),
 
-                  //TODO: 8. Pasang TextButton Sign Up
+                  //TODO: 9. Pasang TextButton Sign In
                   SizedBox(height: 10),
                   TextButton(
-                    onPressed: () {},
-                    child: Text('Belum punya akun? Daftar di sini.'),
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      text: 'Belum punya akun?',
-                      style: TextStyle(fontSize: 16, color: Colors.deepPurple),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Daftar di sini.',
-                          style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
-                            fontSize: 16,
-                          ),
-                          recognizer: TapGestureRecognizer()..onTap = () {},
-                        ),
-                      ],
-                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('Sudah punya akun? Sign In di sini.'),
                   ),
                 ],
               ),
